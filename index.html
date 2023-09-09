@@ -15,6 +15,64 @@
         <title>Premier League Quiz</title>
     </head>
     <body>
+        <div class="container">
+            <img class="logo" src="premierlogo.png" alt="Logo">
+            <h1>Welcome to the Five-year Premier League Quiz</h1>
+            <button id="login-btn" onclick="showLoginForm()">Login</button>
+            <button id="rules-btn" onclick="showRules()">Rules</button>
+            <button id="scores-btn" onclick="showScores()">Scores</button>
+            <div id="login-form" style="display: none;">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="rules" style="display: none;">
+                <h2>Rules</h2>
+                <p>The rules are:
+                    <ul>
+                        <li>To participate in the quiz, players must provide a valid email address for logging in.</li>
+                        <li>Each player starts with 3 lives.</li>
+                        <li>Each correct answer earns the player 100 points.</li>
+                        <li>Incorrect answers do not result in a point deduction but will cost the player one life.</li>
+                        <li>The quiz will cover events from the English Premier League that occurred in the last five years.</li>
+                        <li>Questions will be presented in multiple-choice format.</li>
+                        <li>Players must select the correct answer from the given four options.</li>
+                        <li>Players will be presented with a series of questions related to English Premier League events.</li>
+                        <li>If you answer incorrectly, you will lose one life, but the game will continue with the next question.</li>
+                        <li>You can skip a question if you are unsure, but no points will be awarded or deducted for skipped questions.</li>
+                        <li>The game ends when you lose all 3 lives or you have completed all the questions in the quiz.</li>
+                        <li>Cheating or using external resources to answer questions is not allowed.</li>   
+                        <li>Fair play and honest participation are expected from all players.</li>                                     
+                    </ul>
+                </p>
+            </div>
+            <div id="scores" style="display: none;">
+                <h2>Scores</h2>
+                <p>Email: <span id="userEmail"></span></p>
+                <p>Score: <span id="userPoints"></span></p>
+            </div>
+        </div>
+        <h1>Quiz on Important Facts</h1>
+        <div class="quiz-container">
+            <div id="quiz"></div>
+        </div>
+        <button id="previous">Previous Question</button>
+        <button id="next">Next Question</button>
+        <button id="submit">Submit Quiz</button>
+        <button id="play-again" style="display: none;">Play Again</button>
+        
+        <div id="results"></div>
+        <div id="lives"></div>
+        <div id="score"></div>
+        
+        <!-- Add the "Log Out" button -->
+        <button id="logout">Log Out</button>
+
+        
+        <script src="script.js"></script>
     
     </body>
 </html>

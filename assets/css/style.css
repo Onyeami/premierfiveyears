@@ -45,3 +45,16 @@ button {
 #scores {
     display: none;
 }
+
+/* Media queries for responsive background image */
+@media only screen and (max-width: 768px) {
+    body {
+        background-size: contain;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    body {
+        background-size: cover;
+    }
+}

@@ -113,4 +113,8 @@ The target audience comprises over one billion English Premier League fans from 
 6. Youtube:
    - Youtube was used for further researches and troubleshooting
 7. Google Chrome:
-   - Screenshots of Premier League logo and background image were taken from google.
+   - Screenshots of Premier League logo and background image were taken from the google.
+
+## Testing
+
+The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.

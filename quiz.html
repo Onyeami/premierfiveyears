@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <style>
-            
             body {
                 font-size: 20px;
                 font-family: 'Arial', sans-serif;
@@ -11,7 +10,7 @@
                 text-align: center;
                 background-color: #f8f6f0;
             }
-            
+
             h1 {
                 font-weight: 300;
                 margin: 0px;
@@ -20,25 +19,25 @@
                 background-color: #444;
                 color: #fff;
             }
-            
+
             .question {
                 font-size: 30px;
                 margin-bottom: 10px;
             }
-            
+
             .answers {
                 margin-bottom: 20px;
                 text-align: left;
                 display: inline-block;
             }
-            
+
             .answers label {
                 display: block;
                 margin-bottom: 10px;
             }
 
             button {
-                font-family: 'Work Sans', sans-serif;
+                font-family: 'Arial', sans-serif;
                 font-size: 22px;
                 background-color: #279;
                 color: #fff;
@@ -75,39 +74,41 @@
             }
         </style>
     </head>
-    
     <body>
         <h1>Premier League Quiz</h1>
         <div class="quiz-container">
             <div id="quiz"></div>
         </div>
-        <button id="previous">Previous Question</button>
-        <button id="next">Next Question</button>
-        <button id="submit">Submit Quiz</button>
-        <button id="play-again" style="display: none;">Play Again</button>
-        
+        <button id="previousButton">Previous</button>
+        <button id="submitAnswer">Submit Answer</button>
+        <button id="playAgain" style="display: none;">Play Again</button>
         <div id="results"></div>
         <div id="lives"></div>
-        <div id="score"></div>
+        <div id="points"></div>
+        <audio id="correctAudio" src="assets/audio/correct.mp3"></audio>
+        <audio id="incorrectAudio" src="assets/audio/incorrect.mp3"></audio>
+        <script src="script.js"></script>
 
-        <!-- Add the "Log Out" button -->
-        <button id="logout">Log Out</button>
+        <script>
+            (function () {
+                // Variables
+                let lives = 3;
+                let points = 0;
+                let currentSlide = 0; // Define currentSlide here
+                const quizContainer = document.getElementById('quiz');
+                const resultsContainer = document.getElementById('results');
+                const submitAnswerButton = document.getElementById('submitAnswer');
+                const playAgainButton = document.getElementById('playAgain');
+                const livesContainer = document.getElementById('lives');
+                const pointsContainer = document.getElementById('points');
 
-        <script>(function () {
-            // Functions
-            function buildQuiz() {
-                // variable to store the HTML output
-                const output = [];
+                function buildQuiz() {
+                    const output = [];
 
-                // for each question...
-                myQuestions.forEach(
-                    (currentQuestion, questionNumber) => {
-                        // variable to store the list of possible answers
+                    myQuestions.forEach((currentQuestion, questionNumber) => {
                         const answers = [];
-                        
-                        // and for each available answer...
+
                         for (letter in currentQuestion.answers) {
-                            // ...add an HTML radio button
                             answers.push(
                                 `<label>
                                     <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -117,121 +118,28 @@
                             );
                         }
 
-                        // add this question and its answers to the output
                         output.push(
                             `<div class="slide">
                                 <div class="question"> ${currentQuestion.question} </div>
                                 <div class="answers"> ${answers.join("")} </div>
                             </div>`
                         );
-                    }
-                );
+                    });
 
-                // finally combine our output list into one string of HTML and put it on the page
-                quizContainer.innerHTML = output.join('');
-            }
-            let lives = 3;
-            let score = 0;
-            let quizSubmitted = false; // Track if the quiz has been submitted
-
-            function showResults() {
-                if (quizSubmitted) return;
-                // gather answer containers from our quiz
-                const answerContainers = quizContainer.querySelectorAll('.answers');
-                
-                // keep track of user's answers
-                let numCorrect = 0;
-
-                // for each question...
-                myQuestions.forEach((currentQuestion, questionNumber) => {
-                    // find selected answer
-                    const answerContainer = answerContainers[questionNumber];
-                    const selector = `input[name=question${questionNumber}]:checked`;
-                    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-                    // if answer is correct
-                    if (userAnswer === currentQuestion.correctAnswer) {
-                        // add to the number of correct answers
-                        numCorrect++;
-
-                        // increase score by 100
-                        score += 100;
-
-                        // color the answers green
-                        answerContainers[questionNumber].style.color = 'lightgreen';
-                    }
-                    // if answer is wrong or blank
-                    else {
-                        // decrease lives by 1
-                        lives--;
-
-                        // color the answers red
-                        answerContainers[questionNumber].style.color = 'red';
-                    }
-                    quizSubmitted = true; // Set the flag to indicate the quiz has been submitted
-                    document.getElementById('play-again').style.display = 'inline-block'; // Show the "Play Again" button
-                });
-
-                // update display to show current number of lives and score
-                livesContainer.innerHTML = `Lives: ${lives}`;
-                scoreContainer.innerHTML = `Score: ${score}`;
-
-                // show number of correct answers out of total
-                resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-                quizSubmitted = true; // Set the flag to indicate the quiz has been submitted
-                document.getElementById('submit').style.display = 'none'; // Hide the "Submit" button
-                document.getElementById('play-again').style.display = 'inline-block'; // Show the "Play Again" button
-            }
-
-            function showSlide(n) {
-                slides[currentSlide].classList.remove('active-slide');
-                slides[n].classList.add('active-slide');
-                currentSlide = n;
-                if (currentSlide === 0) {
-                    previousButton.style.display = 'none';
+                    quizContainer.innerHTML = output.join('');
                 }
-                else {
-                    previousButton.style.display = 'inline-block';
-                }
-                if (currentSlide === slides.length - 1) {
-                    nextButton.style.display = 'none';
-                    submitButton.style.display = 'inline-block';
-                }
-                else {
-                    nextButton.style.display = 'inline-block';
-                    submitButton.style.display = 'none';
-                }
-            }
 
-            function showNextSlide() {
-                showSlide(currentSlide + 1);
-            }
-
-            function showPreviousSlide() {
-                showSlide(currentSlide - 1);
-            }
-
-            // Variables
-            const quizContainer = document.getElementById('quiz');
-            const resultsContainer = document.getElementById('results');
-            const submitButton = document.getElementById('submit');
-            const logout = document.getElementById('logout');
-            const livesContainer = document.getElementById('lives');
-            const playAgainButton = document.getElementById('play-again'); // Get the "Play Again" button
-            
-            const scoreContainer = document.getElementById('score');
-
-            const myQuestions = [
-                {
-                    question: "Who won the English Premier League in the 2016-2017 season?",
-                    answers: {
-                        a: "Chelsea",
-                        b: "Manchester City",
-                        c: "Liverpool",
-                        d: "Arsenal"
+                const myQuestions = [
+                    {
+                        question: "Who won the English Premier League in the 2016-2017 season?",
+                        answers: {
+                            a: "Chelsea",
+                            b: "Manchester City",
+                            c: "Liverpool",
+                            d: "Arsenal"
+                        },
+                        correctAnswer: "a"
                     },
-                    correctAnswer: "a"
-                },
                 {
                     question: "Which team finished as the runner-up in the 2017-2018 Premier League season?",
                     answers: {
@@ -833,33 +741,135 @@
                     correctAnswer: "a"
                 },
             ];
-            // Kick things off
-            buildQuiz();
+            function showResults() {
+                        const answerContainers = quizContainer.querySelectorAll('.answers');
+                        const answerContainer = answerContainers[currentSlide];
+                        const selector = `input[name=question${currentSlide}]:checked`;
+                        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+                        const currentQuestion = myQuestions[currentSlide];
 
-            // Pagination
-            const previousButton = document.getElementById("previous");
-            const nextButton = document.getElementById("next");
+                        if (userAnswer === currentQuestion.correctAnswer) {
+                            points += 100;
+                            resultsContainer.innerHTML = 'Correct!';
+                            // Play the correct answer audio
+                            const correctAudio = document.getElementById('correctAudio');
+                            correctAudio.play();
+                        } else {
+                            lives--;
+                            resultsContainer.innerHTML = 'Incorrect!';
+                            // Play the incorrect answer audio
+                            const incorrectAudio = document.getElementById('incorrectAudio');
+                            incorrectAudio.play();
 
-            const slides = document.querySelectorAll(".slide");
-            let currentSlide = 0;
+                            if (lives === 0) {
+                                quizContainer.innerHTML = 'Game Over!';
+                                playAgainButton.style.display = 'block';
+                                submitButton.style.display = 'none';
+                                previousButton.style.display = 'none';
 
-            // Show the first slide
-            showSlide(currentSlide);
+                                resultsContainer.innerHTML += `<br>Your Score: ${points}`;
 
-            // Event listeners
-            submitButton.addEventListener('click', showResults);
-            previousButton.addEventListener("click", showPreviousSlide);
-            playAgainButton.addEventListener('click', playAgain); // Add event listener for "Play Again" button
-            nextButton.addEventListener("click", showNextSlide);
-            logout.addEventListener("click", logoutbtn);
-            function playAgain() {
-                window.location.href = "quiz.html";
-            }
-            function logoutbtn() {
-                window.location.href = "index.html";
-            }
-        })();
-        </script>
-    </body>
+                                livesContainer.style.display = 'none'; // Hide lives container
+                                pointsContainer.style.display = 'none'; // Hide points container
+
+                                lives = 3; // Reset lives
+                                points = 0; // Reset points
+                            }
+                        }
+
+                        // Check if score is 1000 and add an extra life
+                        if (points === 1000) {
+                            lives++;
+                        }
+
+                        livesContainer.innerHTML = `Lives: ${lives}`;
+                        pointsContainer.innerHTML = `Points: ${points}`;
+
+                        // Store the user's score in localStorage
+                        localStorage.setItem("userScore", points);
+
+                        showNextSlide(); // Move to the next question
+                    }
+
+
+                    const previousButton = document.getElementById('previousButton');
+
+                    previousButton.addEventListener('click', function () {
+                        showSlide(currentSlide - 1);
+                    });
+
+
+
+                    const submitButton = document.getElementById('submitAnswer');
+
+
+                    function showSlide(n) {
+                        const slides = document.querySelectorAll(".slide");
+                        if (n >= slides.length) {
+                            return;
+                        }
+
+                        slides[currentSlide].classList.remove("active-slide");
+                        slides[n].classList.add("active-slide");
+
+                        currentSlide = n;
+
+                        previousButton.style.display = currentSlide === 0 ? "none" : "block"; // Hide previous button if on the first slide
+                        submitAnswerButton.disabled = currentSlide === slides.length - 1; // Disable submit button if on the last slide
+                    }
+
+
+                    function showNextSlide() {
+                        showSlide(currentSlide + 1);
+                    }
+
+                    buildQuiz();
+                    showSlide(0); // Show the first slide
+
+                    submitAnswerButton.addEventListener('click', function () {
+                        showResults();
+
+                        // Check if the player has reached 1000 points and display message
+                        if (points >= 1000) {
+                            resultsContainer.innerHTML += "<br>Congratulations! You earned an extra life!";
+                        }
+
+                        // Check if it's the last slide
+                        if (currentSlide === myQuestions.length - 1) {
+                            // Display the score and lives in a pop-up
+                            alert(`Your Score: ${points}\nLives Left: ${lives}`);
+
+                            // Hide the "Submit" button
+                            submitAnswerButton.style.display = 'none';
+                            // After displaying the pop-up and hiding the "Submit" button
+                            showCorrectAnswers();
+
+
+                            // Show the "Play Again" button
+                            playAgainButton.style.display = 'block';
+                        }
+                    });
+                    function showCorrectAnswers() {
+                        const answerContainers = quizContainer.querySelectorAll('.answers');
+                        myQuestions.forEach((currentQuestion, questionNumber) => {
+                            const answerContainer = answerContainers[questionNumber];
+                            const correctAnswer = currentQuestion.correctAnswer;
+
+                            // Find the correct answer label and add a class for styling
+                            const correctAnswerLabel = answerContainer.querySelector(`[value="${correctAnswer}"]`);
+                            if (correctAnswerLabel) {
+                                correctAnswerLabel.parentElement.classList.add('correct-answer');
+                            }
+                        });
+                    }
+
+
+                    playAgainButton.addEventListener("click", function () {
+                        location.reload();
+                    });
+                })();
+
+            </script>
+                </body>
 
 </html>

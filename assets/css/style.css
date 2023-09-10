@@ -46,6 +46,10 @@ button {
     display: none;
 }
 
+.correct-answer {
+    background-color: #7FFF00;
+}
+
 /* Media queries for responsive background image */
 @media only screen and (max-width: 768px) {
     body {

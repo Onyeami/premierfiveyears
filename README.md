@@ -76,3 +76,16 @@ The target audience comprises over one billion English Premier League fans from 
 
 3. Imagery
    - Screenshots of Premier League and some Premier League players were used as the quiz logo and the screen cover respectively. The logo is the official Premier League logo and the background image is action-packed images merged into one, of a thrilling moment from Premier League matches, such as goal celebration, teams line-ups.
+
+4. Layout
+   - The quiz has sixty questions and four multiple-choice options presented in a clean and organized format. Interactive elements, such as buttons are use to guide participants through the quiz.
+
+## Wireframes
+
+1. Laptop screen
+
+![wireframe design for the login page](assets/images/laptopview.png)
+2. Monitor screen
+![wireframe design for the question page](assets/images/quesview.jpg)
+3. Phone screen
+![wireframe design for the login page on a phone](assets/images/mobileview.png)

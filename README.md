@@ -26,16 +26,16 @@ Welcome to the Premier League Quiz Game. This is where you can test your knowled
 
     - Each player starts with lives.
     - A player loses one life when he answers a question incorrectly.
-    - The game ends when a player runs out of lives.
-    - When a player gets 1000 points he will get a bonus live.
+    - The game ends when a player runs out of his three lives.
+    - Each 1000 points attracts an extra live.
 
 4. ## _User Authentication_
 
-To play the game, users must log in with their email address. This ensures a personalized experience and allowa us to track your progress and high scores.
+To play the game, users must log in with their email address. This ensures a personalized experience and allow us to track your progress and high scores.
 
 ## User Experience
 
-The target audience comprises over one billion English Premier League fans from various parts of the world. A five-year landmark was chosen to ensure that the events remain fresh in the players' minds. This decision was made to enhance the quiz's user-friendliness, eliminating the need for players to ponder extensively over their answers.
+The target audience comprises over one billion English Premier League fans from various parts of the world. Last five years landmark was chosen to ensure that the events remain fresh in the players' minds. This decision was made to enhance the quiz's user-friendliness, eliminating the need for players to ponder extensively over their answers.
 
 ## User stories
 
@@ -65,3 +65,7 @@ The target audience comprises over one billion English Premier League fans from 
    - A frequent player may see the website as a tool for continuous learning. He will want to deepen his understanding of the Premier League, including its history, tactics, and player profiles.
 
    - A frequent player will want to build and maintain connections with other players on the website. He may participate in discussions, join leagues or clubs, or engage in social features offered by the platform.
+
+## Design
+
+1. Colour Scheme:

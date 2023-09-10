@@ -68,4 +68,11 @@ The target audience comprises over one billion English Premier League fans from 
 
 ## Design
 
-1. Colour Scheme:
+1. Colour Scheme
+   - #f8f6f0 was used as the background colour
+
+2. Typography
+   - Arial font is the main font used throughtout the whole website with Sans-Serif as the fallback font.
+
+3. Imagery
+   - Screenshots of Premier League and some Premier League players were used as the quiz logo and the screen cover respectively. The logo is the official Premier League logo and the background image is action-packed images merged into one, of a thrilling moment from Premier League matches, such as goal celebration, teams line-ups.

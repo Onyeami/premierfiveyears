@@ -89,3 +89,28 @@ The target audience comprises over one billion English Premier League fans from 
 ![wireframe design for the question page](assets/images/quesview.jpg)
 3. Phone screen
 ![wireframe design for the login page on a phone](assets/images/mobileview.png)
+
+## Technologies Used
+
+## Languages Used
+
+- HTML
+- CSS
+- JavaScript
+
+## Frameworks, Libraries and Programs Used
+
+1. Bootstrap 4.4.1:
+    - Bootstrap was used to assist with the responsiveness and styling of the website.
+2. Hover.css:
+    - Hover.css was used on the buttons while being hovered over.
+3. Google Fonts:
+    - Google fonts were used to import the 'Raleway' font into the style.css file which is used on all pages throughout the project.
+4. Git
+    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+5. GitHub:
+    - GitHub is used to store the projects code after being pushed from Git.
+6. Youtube:
+   - Youtube was used for further researches and troubleshooting
+7. Google Chrome:
+   - Screenshots of Premier League logo and background image were taken from google.

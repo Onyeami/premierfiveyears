@@ -802,7 +802,8 @@
                             // Play the correct answer audio
                             const correctAudio = document.getElementById('correctAudio');
                             correctAudio.play();
-                        } else {
+                            
+                        }   else {
                             lives--;
                             resultsContainer.innerHTML = 'Incorrect!';
                             // Play the incorrect answer audio
@@ -827,20 +828,20 @@
 
                         // Mark the current question as answered
                         currentQuestion.answered = true;
-                    } else {
+                    }   else {
                         resultsContainer.innerHTML = "You've already answered this question.";
-                    }
+                        }
 
-                    // Check if score is 1000 and add an extra life
-                    if (points === 1000) {
-                        lives++;
-                    }
+                        // Check if score is 1000 and add an extra life
+                        if (points === 1000) {
+                            lives++;
+                        }
 
-                    livesContainer.innerHTML = `Lives: ${lives}`;
-                    pointsContainer.innerHTML = `Points: ${points}`;
+                        livesContainer.innerHTML = `Lives: ${lives}`;
+                        pointsContainer.innerHTML = `Points: ${points}`;
 
-                    // Store the user's score in localStorage
-                    localStorage.setItem('userScore', points);
+                        // Store the user's score in localStorage
+                        localStorage.setItem('userScore', points);
 
                     showNextSlide(); // Move to the next question
                 }
@@ -851,10 +852,7 @@
                     showSlide(currentSlide - 1);
                 });
 
-
-
                 const submitButton = document.getElementById('submitAnswer');
-
 
                 function showSlide(n) {
                     const slides = document.querySelectorAll(".slide");
@@ -870,7 +868,6 @@
                     previousButton.style.display = currentSlide === 0 ? "none" : "block"; // Hide previous button if on the first slide
                     submitAnswerButton.disabled = currentSlide === slides.length - 1; // Disable submit button if on the last slide
                 }
-
 
                 function showNextSlide() {
                     showSlide(currentSlide + 1);
@@ -897,11 +894,11 @@
                         // After displaying the pop-up and hiding the "Submit" button
                         showCorrectAnswers();
 
-
                         // Show the "Play Again" button
                         playAgainButton.style.display = 'block';
                     }
                 });
+
                 function showCorrectAnswers() {
                     const answerContainers = quizContainer.querySelectorAll('.answers');
                     myQuestions.forEach((currentQuestion, questionNumber) => {
@@ -916,7 +913,6 @@
                     });
                 }
 
-
                 playAgainButton.addEventListener("click", function () {
                     location.reload();
                 });
@@ -924,5 +920,4 @@
 
         </script>
     </body>
-
 </html>

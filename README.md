@@ -121,4 +121,9 @@ The target audience comprises over one billion English Premier League fans from 
 ## Testing
 
 - No errors were found using W3C CSS Validator
+  - [W3C CSS Validator](http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2Fonyeami.github.io%2Fpremierfiveyears%2F&usermedium=all&vextwarning=&warning=1)
+
+![CSS validator](assets/images/css-validation.png)
+
 - No errors were found using Nu HTML checker
+![Nu HTML checker](assets/images/nuhtmlchecker.png)

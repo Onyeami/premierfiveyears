@@ -8,6 +8,9 @@
 
 Welcome to the Premier League Quiz Game. This is where you can test your knowledge of the English Premier League over the past five years. This README file provides an overview of the game's structure, objectives and user experience.
 
+![Responsive image](assets/images/monitorphone.jpg)
+![Responsive Image](assets/images/laptopscreen.jpg)
+
 ## Game Structure
 
 1. ## _Quiz Questions_

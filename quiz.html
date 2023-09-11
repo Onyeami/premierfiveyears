@@ -3,8 +3,9 @@
     <head>
         <style>
             body {
+                
                 font-size: 20px;
-                font-family: 'Arial', sans-serif;
+                font-family: 'Work Sans', sans-serif;
                 color: #333;
                 font-weight: 300;
                 text-align: center;
@@ -28,7 +29,7 @@
                 font-size: 2rem;
                 margin-bottom: 10px;
             }
-
+            
             .answers {
                 margin-bottom: 20px;
                 text-align: left;
@@ -44,7 +45,7 @@
             button {
                 display: inline-block;
                 margin-right: 10px;
-                font-family: 'Arial', sans-serif;
+                font-family: 'Work Sans', sans-serif;
                 font-size: 1.8rem;
                 background-color: #279;
                 color: #fff;
@@ -60,7 +61,7 @@
             }
 
             .correct-answer {
-                background-color: #7fff00;
+                background-color: #7FFF00;
             }
 
             .slide {
@@ -106,17 +107,16 @@
                     font-size: 2.2rem;
                     padding: 25px;
                 }
-                
             }
         </style>
     </head>
+
     <body>
         <h1>Premier League Quiz</h1>
         <div class="quiz-container">
             <div id="quiz"></div>
         </div>
         <button id="previousButton">Previous</button>
-        <button id="submitAnswer">Submit Answer</button>
         <button id="playAgain" style="display: none;">Play Again</button>
         <button id="logoutButton">Logout</button>
         <button id="submitAnswer">Submit Answer</button>
@@ -127,7 +127,7 @@
 
         <audio id="correctAudio" src="assets/audio/correct.mp3"></audio>
         <audio id="incorrectAudio" src="assets/audio/incorrect.mp3"></audio>
-        
+
         <script>
             (function () {
                 // Variables
@@ -143,10 +143,8 @@
 
                 function buildQuiz() {
                     const output = [];
-
-                    myQuestions.forEach((currentQuestion, questionNumber) => {
+                    Questions.forEach((currentQuestion, questionNumber) => {
                         const answers = [];
-
                         for (letter in currentQuestion.answers) {
                             answers.push(
                                 `<label>
@@ -169,8 +167,9 @@
                 }
 
                 const logoutButton = document.getElementById('logoutButton');
-                logoutButton.addEventListener('click', function() {
-                    //Navigate to index.html
+
+                logoutButton.addEventListener('click', function () {
+                    // Navigate to index.html
                     window.location.href = 'index.html';
                 });
 
@@ -358,12 +357,12 @@
                     {
                         question: "Which team had the most draws in the 2019-2020 Premier League season?",
                         answers: {
-                        a: "West Ham United",
-                        b: "Brighton & Hove Albion",
-                        c: "Wolverhampton Wanderers",
-                        d: "Everton"
-                    },
-                    correctAnswer: "c"
+                            a: "West Ham United",
+                            b: "Brighton & Hove Albion",
+                            c: "Wolverhampton Wanderers",
+                            d: "Everton"
+                        },
+                        correctAnswer: "c"
                     },
                     {
                         question: "Who won the Premier League Player of the Month award for September 2020?",
@@ -786,7 +785,7 @@
                         correctAnswer: "a"
                     },
                 ];
-                
+
                 function showResults() {
                     const answerContainers = quizContainer.querySelectorAll('.answers');
                     const answerContainer = answerContainers[currentSlide];
@@ -799,13 +798,14 @@
                         if (userAnswer === currentQuestion.correctAnswer) {
                             points += 100;
                             resultsContainer.innerHTML = 'Correct!';
+
                             // Play the correct answer audio
                             const correctAudio = document.getElementById('correctAudio');
                             correctAudio.play();
-                            
-                        }   else {
+                        }  else {
                             lives--;
                             resultsContainer.innerHTML = 'Incorrect!';
+                            
                             // Play the incorrect answer audio
                             const incorrectAudio = document.getElementById('incorrectAudio');
                             incorrectAudio.play();
@@ -828,20 +828,21 @@
 
                         // Mark the current question as answered
                         currentQuestion.answered = true;
-                    }   else {
+                        
+                    }  else {
                         resultsContainer.innerHTML = "You've already answered this question.";
-                        }
+                       }
 
-                        // Check if score is 1000 and add an extra life
-                        if (points === 1000) {
-                            lives++;
-                        }
+                       // Check if score is 1000 and add an extra life
+                       if (points === 1000) {
+                        lives++;
+                       }
 
-                        livesContainer.innerHTML = `Lives: ${lives}`;
-                        pointsContainer.innerHTML = `Points: ${points}`;
+                    livesContainer.innerHTML = `Lives: ${lives}`;
+                    pointsContainer.innerHTML = `Points: ${points}`;
 
-                        // Store the user's score in localStorage
-                        localStorage.setItem('userScore', points);
+                    // Store the user's score in localStorage
+                    localStorage.setItem('userScore', points);
 
                     showNextSlide(); // Move to the next question
                 }
@@ -886,11 +887,13 @@
 
                     // Check if it's the last slide
                     if (currentSlide === myQuestions.length - 1) {
+                        
                         // Display the score and lives in a pop-up
                         alert(`Your Score: ${points}\nLives Left: ${lives}`);
 
                         // Hide the "Submit" button
                         submitAnswerButton.style.display = 'none';
+                        
                         // After displaying the pop-up and hiding the "Submit" button
                         showCorrectAnswers();
 
@@ -917,7 +920,6 @@
                     location.reload();
                 });
             })();
-
         </script>
     </body>
 </html>

@@ -107,15 +107,13 @@ The target audience comprises over one billion English Premier League fans from 
     - Bootstrap was used to assist with the responsiveness and styling of the website.
 2. Hover.css:
     - Hover.css was used on the buttons while being hovered over.
-3. Google Fonts:
-    - Google fonts were used to import the 'Raleway' font into the style.css file which is used on all pages throughout the project.
-4. Git
+3. Git
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-5. GitHub:
+4. GitHub:
     - GitHub is used to store the projects code after being pushed from Git.
-6. Youtube:
+5. Youtube:
    - Youtube was used for further researches and troubleshooting
-7. Google Chrome:
+6. Google Chrome:
    - Screenshots of Premier League logo and background image were taken from the google.
 
 ## Testing

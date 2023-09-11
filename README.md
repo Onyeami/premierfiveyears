@@ -120,4 +120,5 @@ The target audience comprises over one billion English Premier League fans from 
 
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+- No errors were found using W3C CSS Validator
+- No errors were found using Nu HTML checker

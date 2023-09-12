@@ -4,7 +4,7 @@
     <style>
       body {
         font-size: 20px;
-        font-family: "Work Sans", sans-serif;
+        font-family: "Arial", sans-serif;
         color: #333;
         font-weight: 300;
         text-align: center;
@@ -44,6 +44,7 @@
       button {
         display: inline-block;
         margin-right: 10px;
+        margin-top: 47px;
         font-family: "Work Sans", sans-serif;
         font-size: 1.8rem;
         background-color: #279;
@@ -52,8 +53,6 @@
         border-radius: 3px;
         padding: 20px;
         cursor: pointer;
-        margin-bottom: 20px;
-        margin-top: 15px;
       }
 
       button:hover {
@@ -85,6 +84,24 @@
         margin-top: 40px;
       }
 
+      #lives {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #add8e6;
+        /* Light Blue */
+        font-weight: bold;
+      }
+
+      #points {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #90ee90;
+        /* Light Green */
+        font-weight: bold;
+      }
+
       /* Responsive Styles */
       @media screen and (max-width: 768px) {
         body {
@@ -113,6 +130,7 @@
 
   <body>
     <h1>Premier League Quiz</h1>
+
     <div class="quiz-container">
       <div id="quiz"></div>
     </div>
@@ -143,25 +161,25 @@
 
         function buildQuiz() {
           const output = [];
+
           myQuestions.forEach((currentQuestion, questionNumber) => {
             const answers = [];
+
             for (letter in currentQuestion.answers) {
               answers.push(
                 `<label>
-                                    <input type="radio" name="question${questionNumber}" value="${letter}">
-                                    ${letter} :
-                                    ${currentQuestion.answers[letter]}
-                                </label>`
+                      <input type="radio" name="question${questionNumber}" value="${letter}">
+                      ${letter} :
+                      ${currentQuestion.answers[letter]}
+                    </label>`
               );
             }
 
             output.push(
               `<div class="slide">
-                                <div class="question"> ${
-                                  currentQuestion.question
-                                } </div>
-                                <div class="answers"> ${answers.join("")} </div>
-                            </div>`
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join("")} </div>
+                  </div>`
             );
           });
 
@@ -862,14 +880,12 @@
             if (userAnswer === currentQuestion.correctAnswer) {
               points += 100;
               resultsContainer.innerHTML = "Correct!";
-
               // Play the correct answer audio
               const correctAudio = document.getElementById("correctAudio");
               correctAudio.play();
             } else {
               lives--;
               resultsContainer.innerHTML = "Incorrect!";
-
               // Play the incorrect answer audio
               const incorrectAudio = document.getElementById("incorrectAudio");
               incorrectAudio.play();
@@ -957,7 +973,6 @@
 
             // Hide the "Submit" button
             submitAnswerButton.style.display = "none";
-
             // After displaying the pop-up and hiding the "Submit" button
             showCorrectAnswers();
 
@@ -965,7 +980,6 @@
             playAgainButton.style.display = "block";
           }
         });
-
         function showCorrectAnswers() {
           const answerContainers = quizContainer.querySelectorAll(".answers");
           myQuestions.forEach((currentQuestion, questionNumber) => {

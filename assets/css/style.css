@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('cover1.png');
+    background-image: url("cover1.png");
     background-size: cover;
     background-position: center;
 }
@@ -32,6 +32,7 @@ button {
     margin: 7px;
     cursor: pointer;
     margin-left: 80px;
+    margin-top: 15px;
 }
 
 #login-form {
@@ -47,7 +48,7 @@ button {
 }
 
 .correct-answer {
-    background-color: #7FFF00;
+    background-color: #7fff00;
 }
 
 /* Media queries for responsive background image */
